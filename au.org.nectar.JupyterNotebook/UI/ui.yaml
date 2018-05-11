@@ -1,0 +1,103 @@
+#  Licensed under the Apache License, Version 2.0 (the "License"); you may
+#  not use this file except in compliance with the License. You may obtain
+#  a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#  License for the specific language governing permissions and limitations
+#  under the License.
+
+Version: 2.2
+
+Templates:
+  customVolumeAttachment:
+    '/dev/vdb':
+      ?:
+        type: io.murano.resources.ExistingCinderVolume
+      openstackId: $.volumeConfiguration.volumeID
+
+Application:
+  ?:
+    type: au.org.nectar.JupyterNotebook
+  username: $.userConfiguration.username
+  password: $.userConfiguration.password
+  instance:
+    ?:
+      type: io.murano.resources.LinuxMuranoInstance
+    name: generateHostname($.instanceConfiguration.unitNamingPattern, 1)
+    flavor: $.instanceConfiguration.flavor
+    keyname: $.instanceConfiguration.keyPair
+    availabilityZone: $.instanceConfiguration.availabilityZone
+    volumes: switch($.volumeConfiguration.volumeID, $=''=>null, $!=null=>$customVolumeAttachment)
+    image: d1049b0e-4eff-47b7-854a-096779ae3685
+
+Forms:
+  - instanceConfiguration:
+      fields:
+        - name: flavor
+          type: flavor
+          label: Instance flavor
+          description: >-
+            Select your desired flavor. Consider that application performance
+            will be affected by your choice.
+          required: false
+        - name: keyPair
+          type: keypair
+          label: Key pair
+          description: >-
+            Select the keypair to control access to instances. You can login
+            to the instance using SSH with this keypair after the deployment
+            has completed.
+          required: false
+        - name: availabilityZone
+          type: azone
+          label: Availability zone
+          description: >-
+            Select availability zone where the application would be created.
+            If you plan to use a volume for your data, this will need match
+            the Availability Zone of the volume.
+          required: false
+        - name: unitNamingPattern
+          label: Hostname
+          type: string
+          description: An optional host name.
+          required: false
+  - volumeConfiguration:
+      fields:
+        - name: volumeID
+          type: string
+          label: Existing Volume ID
+          description: >-
+            It is recommended to provide the ID of a pre-existing volume for
+            the data storage of this application.
+            If provided, all user data will be stored on this volume and will
+            persist even if the application is deleted.
+          required: false
+  - userConfiguration:
+      fields:
+        - name: title
+          type: string
+          required: false
+          hidden: true
+          descriptionTitle: User account configuration
+          description: >-
+            Details provided here will configure the user account for
+            application. You will be prompted for these when you start.
+        - name: username
+          type: string
+          label: Username
+          descriptionTitle: Username
+          description: >-
+            Provide a username for the new user account.
+            A user account with be created with this username.
+        - name: password
+          type: password
+          label: Password
+          descriptionTitle: Password
+          description: >-
+            Provide password for the new user account.
+            Your password should have at least 7 characters, 1 capital letter,
+            1 digit and 1 specical character

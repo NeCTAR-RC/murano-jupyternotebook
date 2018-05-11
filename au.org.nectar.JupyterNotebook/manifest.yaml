@@ -1,0 +1,32 @@
+#  Licensed under the Apache License, Version 2.0 (the "License"); you may
+#  not use this file except in compliance with the License. You may obtain
+#  a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#  License for the specific language governing permissions and limitations
+#  under the License.
+
+Format: 1.0
+Type: Application
+FullName: au.org.nectar.JupyterNotebook
+Name: Jupyter Notebook
+Description: |
+  The Jupyter Notebook is an open-source web application that allows you to
+  create and share documents that contain live code, equations, visualizations
+  and narrative text. Uses include: data cleaning and transformation,
+  numerical simulation, statistical modeling, data visualization, machine
+  learning, and much more.
+  Please read the important information about this package at
+  https://support.ehelp.edu.au/support/solutions/articles/6000164849
+  An existing volume ID can be provided for storage of all user data, which
+  will be retained, even if this application is deleted. This is recommended
+  for extra storage space and data security.
+Author: NeCTAR
+Tags:
+  - BigData
+Classes:
+ au.org.nectar.JupyterNotebook: JupyterNotebook.yaml
