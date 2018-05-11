@@ -1,7 +1,7 @@
 Murano Jupyter Notebook
 =======================
 
-This is the source for a Jupyter Notenook Murano package running on the
+This is the source for a Jupyter Notebook Murano package running on the
 NeCTAR Research Cloud.
 
 A Makefile is included to help the build process.
