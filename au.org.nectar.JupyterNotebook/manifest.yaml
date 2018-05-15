@@ -20,6 +20,8 @@ Description: |
   and narrative text. Uses include: data cleaning and transformation,
   numerical simulation, statistical modeling, data visualization, machine
   learning, and much more.
+  This package includes Jupyter Notebook with Python 2 and 3 kernels, and
+  supporting Python libraries for NumPy, SciPy and Matplotlib.
   Please read the important information about this package at
   https://support.ehelp.edu.au/solution/articles/6000196124
   An existing volume ID can be provided for storage of all user data, which

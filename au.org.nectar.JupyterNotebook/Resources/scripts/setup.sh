@@ -50,11 +50,12 @@ if [ "$USERNAME" != "$ORIGUSER" ]; then
     export XDG_RUNTIME_DIR="/run/user/\$(id -u $ORIGUSER)"
     systemctl --user stop jupyter-notebook.service
     systemctl --user disable jupyter-notebook.service
-  	sleep 5
 EOF
 
-  # Kill any processes running as the original user
-  killall -u $ORIGUSER
+  sleep 5
+  killall -u $ORIGUSER || true
+  sleep 5
+  killall -9 -u $ORIGUSER || true
 
   # Rename the user
   usermod --login $USERNAME $ORIGUSER
