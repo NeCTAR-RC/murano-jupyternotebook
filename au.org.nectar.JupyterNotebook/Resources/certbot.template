@@ -12,20 +12,20 @@
 
 FormatVersion: 2.0.0
 Version: 1.0.0
-Name: Setup
+Name: Certbot
 
 Parameters:
-  password: $password
-  username: $username
+  fqdn: $fqdn
+  email: $email
 
 Body: |
-  return setup('\'{0}\' \'{1}\''.format(args.username, args.password.replace("'", ""))).stdout
+  return certbot('{0} {1}'.format(args.fqdn, args.email)).stdout
 
 Scripts:
-  setup:
+  certbot:
     Type: Application
     Version: 1.0.0
-    EntryPoint: setup.sh
+    EntryPoint: certbot.sh
     Files: []
     Options:
       captureStdout: true
