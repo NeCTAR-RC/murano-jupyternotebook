@@ -14,7 +14,6 @@ Format: 1.0
 Type: Application
 FullName: au.org.nectar.JupyterNotebook
 Name: Jupyter Notebook
-Version: 1.0.0
 Description: |
   The Jupyter Notebook is an open-source web application that allows you to
   create and share documents that contain live code, equations, visualizations
