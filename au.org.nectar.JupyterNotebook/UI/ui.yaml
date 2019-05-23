@@ -111,7 +111,7 @@ Forms:
           hidden: true
           description: >-
             Details provided here will configure the user account for
-            application, which is required to log into R-Studio and the
+            application, which is required to log into JupyterNotebook and the
             remote desktop or via SSH.
         - name: username
           type: string

@@ -73,7 +73,7 @@ Methods:
               - $proto: 'http'
               - $fqdn: $ipaddr
               - $._environment.reporter.report($this, 'HTTPS disabled')
-          - $._environment.reporter.report($this, format('R-Studio is available at {pr}://{hn}', pr=>$proto, hn=>$fqdn))
+          - $._environment.reporter.report($this, format('JupyterNotebook is available at {pr}://{hn}', pr=>$proto, hn=>$fqdn))
           - $.setAttr(deployed, true)
 
   enableHttpsCertbot:
