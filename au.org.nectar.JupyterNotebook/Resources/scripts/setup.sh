@@ -88,7 +88,8 @@ set -x
 # Set up Jupyter Notebook with the same password
 su - $USERNAME -c "$SHELL +x" << EOF
   mkdir -p ~/.jupyter
-  python3 -c "from notebook.auth.security import set_password; set_password(password=\"$PASSWORD\")"
+  PASSWORD='$PASSWORD'  # Fix for bash string handling
+  python3 -c 'from notebook.auth.security import set_password; set_password(password="'\$PASSWORD'")'
 EOF
 
 loginctl enable-linger $USERNAME
