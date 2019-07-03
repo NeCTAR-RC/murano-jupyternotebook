@@ -32,7 +32,7 @@ Application:
     keyname: $.instanceConfiguration.keyPair
     availabilityZone: $.instanceConfiguration.availabilityZone
     volumes: switch($.volumeConfiguration.volume, $=''=>null, $!=null=>$customVolumeAttachment)
-    image: replace-this
+    image: 5d8125b9-8051-40c5-a14b-285d3fa17ebe
   recordSet:
     ?:
       type: io.murano.resources.RecordSet
@@ -70,10 +70,10 @@ Forms:
           label: Host name
           required: false
           maxLength: 64
-          regexpValidator: '^[a-zA-z][-\w]*$'
+          regexpValidator: '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'
           errorMessages:
-            invalid: Just letters, numbers and hyphens are allowed.
-          helpText: Just letters, numbers and hyphens are allowed.
+            invalid: Just lowercase letters, numbers and hyphens are allowed.
+          helpText: Just lowercase letters, numbers and hyphens are allowed.
           description: >-
             Specify a string, that will be used in instance hostname and possible
             DNS entry. Just letters, numbers and hyphens are allowed.
@@ -116,6 +116,9 @@ Forms:
         - name: username
           type: string
           label: Username
+          regexpValidator: '^[a-z]([a-z0-9]*)?$'
+          errorMessages:
+            invalid: Only lowercase letters and numbers are allowed.
           descriptionTitle: Username
           description: >-
             Provide a username for the new user account.
