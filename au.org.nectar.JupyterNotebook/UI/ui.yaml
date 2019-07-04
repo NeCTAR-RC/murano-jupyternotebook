@@ -32,7 +32,7 @@ Application:
     keyname: $.instanceConfiguration.keyPair
     availabilityZone: $.instanceConfiguration.availabilityZone
     volumes: switch($.volumeConfiguration.volume, $=''=>null, $!=null=>$customVolumeAttachment)
-    image: 5d8125b9-8051-40c5-a14b-285d3fa17ebe
+    image: 41c57378-ee4a-418d-b2af-82b31b80cf29
   recordSet:
     ?:
       type: io.murano.resources.RecordSet
@@ -121,14 +121,15 @@ Forms:
             invalid: Only lowercase letters and numbers are allowed.
           descriptionTitle: Username
           description: >-
-            Provide a username for the new user account.
-            A user account with be created with this username.
+            Provide a username for the new user account to be created.
+            The username should be lowercase letters and numbers only, and must
+            start with a letter.
         - name: password
           type: password
           label: Password
           descriptionTitle: Password
           description: >-
             Provide password for the new user account.
-            Your password should have at least 7 characters, 1 capital letter,
-            1 digit and 1 specical character, except single quotes (').
+            It should be at least 7 characters, 1 capital letter,
+            1 digit and 1 specical char, except single quotes (').
 

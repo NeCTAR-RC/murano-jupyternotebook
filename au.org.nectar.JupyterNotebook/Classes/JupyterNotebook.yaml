@@ -85,6 +85,6 @@ Methods:
     Body:
       - $resources: new(sys:Resources)
       - $template: $resources.yaml('certbot.template').bind(dict(fqdn=>$fqdn, email=>$email))
-      - $._environment.reporter.report($this, 'Setting up Certbot...')
+      - $._environment.reporter.report($this, 'Setting up HTTPS certificate...')
       - $fingerprint: $.instance.agent.call($template, $resources)
       - Return: $fingerprint
