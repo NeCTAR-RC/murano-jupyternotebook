@@ -1,7 +1,7 @@
 TARGET=au.org.nectar.JupyterNotebook
 .PHONY: $(TARGET).zip
 
-all: update-image-id $(TARGET).zip upload
+all: update-image-id $(TARGET).zip
 
 build: $(TARGET).zip
 
