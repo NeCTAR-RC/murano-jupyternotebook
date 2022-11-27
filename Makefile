@@ -1,4 +1,4 @@
-TARGET=au.org.nectar.JupyterNotebook
+TARGET=au.org.nectar.JupyterLab
 .PHONY: $(TARGET).zip
 
 all: update-image-id $(TARGET).zip
@@ -18,8 +18,8 @@ public:
 	murano package-update --is-public true $$package_id
 
 update-image-id:
-	@echo "Searching for latest image of NeCTAR Jupyter Notebook (Ubuntu 18.04 LTS Bionic)..."
-	@image_id=$$(openstack image list --limit 100 --long -f value -c ID -c Project --property "name=NeCTAR Jupyter Notebook (Ubuntu 18.04 LTS Bionic)" --sort created_at | tail -n1 | cut -d" " -f1); \
+	@echo "Searching for latest image of NeCTAR JupyterLab..."
+	@image_id=$$(openstack image list --limit 100 --long -f value -c ID -c Project --property "name=NeCTAR JupyterLab" --sort created_at | tail -n1 | cut -d" " -f1); \
 	if [ -z "$$image_id" ]; then \
 		echo "Image ID not found"; exit 1; \
 	fi; \

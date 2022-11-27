@@ -21,10 +21,9 @@ Templates:
 
 Application:
   ?:
-    type: au.org.nectar.JupyterNotebook
+    type: au.org.nectar.JupyterLab
   username: $.userConfiguration.username
   password: $.userConfiguration.password
-  email: $.recordSetConfiguration.email
   instance:
     ?:
       type: io.murano.resources.LinuxMuranoInstance
@@ -33,7 +32,7 @@ Application:
     keyname: $.instanceConfiguration.keyPair
     availabilityZone: $.instanceConfiguration.availabilityZone
     volumes: switch($.volumeConfiguration.volume, $=''=>null, $!=null=>$customVolumeAttachment)
-    image: 3030ae9f-cf87-4eeb-8aee-eaec6a01da11
+    image: 8ca57cfc-ded9-461a-a679-32cb65abb43d
   recordSet:
     ?:
       type: io.murano.resources.RecordSet
@@ -86,17 +85,6 @@ Forms:
             A HTTPS certificate will be provisioned for you automatically if
             you choose a zone.
           required: false
-        - name: email
-          type: string
-          label: Email address
-          regexpValidator: '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-          errorMessages:
-            invalid: Must be a valid email address
-          descriptionTitle: Email address
-          description: >-
-            Provide an email address for HTTPS certificate notifications.
-            If not provided, HTTPS support will be disabled.
-          required: false
   - volumeConfiguration:
       fields:
         - name: title
@@ -123,7 +111,7 @@ Forms:
           hidden: true
           description: >-
             Details provided here will configure the user account for
-            application, which is required to log into JupyterNotebook and the
+            application, which is required to log into JupyterLab and the
             remote desktop or via SSH.
         - name: username
           type: string
@@ -137,7 +125,7 @@ Forms:
             The username should be lowercase letters and numbers only, and must
             start with a letter.
         - name: password
-          type: password
+          type: string
           label: Password
           descriptionTitle: Password
           description: >-

@@ -51,8 +51,8 @@ if [ "$USERNAME" != "$ORIGUSER" ]; then
 		# Stop any running notebook before renaming user
 		su - $ORIGUSER -c "$SHELL -x" <<-EOF
 			export XDG_RUNTIME_DIR="/run/user/\$(id -u $ORIGUSER)"
-			systemctl --user stop jupyter-notebook.service
-			systemctl --user disable jupyter-notebook.service
+			systemctl --user stop jupyter-lab.service
+			systemctl --user disable jupyter-lab.service
 	EOF
 
 		sleep 5
@@ -86,7 +86,7 @@ PASSWORD="$2"
 echo "${USERNAME}:${PASSWORD}" | chpasswd
 
 # Nuke the password from the murano log file
-sed -i "s/$PASSWORD/******/g" /var/log/murano-agent.log
+#sed -i "s/$PASSWORD/******/g" /var/log/murano-agent.log
 set -x
 
 # Set up Jupyter Notebook with the same password
@@ -105,8 +105,8 @@ systemctl start user@$USERID.service
 su - $USERNAME -c "$SHELL -x" <<-EOF
 	mkdir -p ~/Notebooks
 	export XDG_RUNTIME_DIR="/run/user/$USERID"
-	systemctl --user enable jupyter-notebook.service
-	systemctl --user restart jupyter-notebook.service
+	systemctl --user enable jupyter-lab.service
+	systemctl --user restart jupyter-lab.service
 EOF
 
 # vim: ts=2 sw=2 :

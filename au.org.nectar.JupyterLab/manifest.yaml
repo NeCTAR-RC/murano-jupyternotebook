@@ -12,15 +12,15 @@
 
 Format: 1.0
 Type: Application
-FullName: au.org.nectar.JupyterNotebook
-Name: Jupyter Notebook
+FullName: au.org.nectar.JupyterLab
+Name: JupyterLab
 Description: |
-  The Jupyter Notebook is an open-source web application that allows you to
+  The JupyterLab is an open-source web application that allows you to
   create and share documents that contain live code, equations, visualizations
   and narrative text. Uses include: data cleaning and transformation,
   numerical simulation, statistical modeling, data visualization, machine
   learning, and much more.
-  This package includes Jupyter Notebook with Python 2 and 3 kernels, and
+  This package includes Jupyter Notebook with Python 3 and
   supporting Python libraries for NumPy, SciPy and Matplotlib.
   Please read the important information about this package at
   https://support.ehelp.edu.au/solution/articles/6000196124
@@ -31,4 +31,4 @@ Author: NeCTAR
 Tags:
   - BigData
 Classes:
- au.org.nectar.JupyterNotebook: JupyterNotebook.yaml
+ au.org.nectar.JupyterLab: JupyterLab.yaml
