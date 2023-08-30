@@ -125,11 +125,10 @@ Forms:
             The username should be lowercase letters and numbers only, and must
             start with a letter.
         - name: password
-          type: string
+          type: password
           label: Password
           descriptionTitle: Password
           description: >-
-            Provide password for the new user account.
-            It should be at least 7 characters, 1 capital letter,
-            1 digit and 1 specical char, except single quotes (').
-
+            Password for the new user account.
+            It must be at least 7 characters and contain letters, numbers and
+            special characters, except single quote (').
