@@ -31,4 +31,4 @@ Author: NeCTAR
 Tags:
   - BigData
 Classes:
- au.org.nectar.JupyterLab: JupyterLab.yaml
+  au.org.nectar.JupyterLab: JupyterLab.yaml

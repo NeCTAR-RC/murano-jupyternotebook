@@ -32,7 +32,7 @@ Application:
     keyname: $.instanceConfiguration.keyPair
     availabilityZone: $.instanceConfiguration.availabilityZone
     volumes: switch($.volumeConfiguration.volume, $=''=>null, $!=null=>$customVolumeAttachment)
-    image: 8ca57cfc-ded9-461a-a679-32cb65abb43d
+    image: "Nectar JupyterLab"
   recordSet:
     ?:
       type: io.murano.resources.RecordSet
