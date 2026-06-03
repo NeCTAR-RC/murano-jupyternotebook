@@ -90,11 +90,18 @@ echo "${USERNAME}:${PASSWORD}" | chpasswd
 set -x
 
 # Set up Jupyter Notebook with the same password
-su - $USERNAME -c "$SHELL +x" << EOF
+su - $USERNAME -c "$SHELL -x" <<-EOC
 	mkdir -p ~/.jupyter
-	PASSWORD='$PASSWORD'  # Fix for bash string handling
-	python3 -c 'from notebook.auth.security import set_password; set_password(password="'\$PASSWORD'")'
+	PASSWORD='$PASSWORD'  # Fix bash string handling
+	ASHED_PW=\$(/usr/local/anaconda/bin/python -c "from jupyter_server.auth import passwd; print(passwd(\"\${PASSWORD}\"))")
+	tee ~/.jupyter/jupyter_server_config.json << EOF
+{
+  "IdentityProvider": {
+    "hashed_password": "\$HASHED_PW"
+  }
+}
 EOF
+EOC
 
 loginctl enable-linger $USERNAME
 
